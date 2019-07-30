@@ -1,15 +1,25 @@
 import React from 'react'
-import {AppBar, Toolbar, Typography} from '@material-ui/core'
+import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  }
+}));
 
 const Header = () => {
+  const classes = useStyles();
+
   return (
-    <AppBar position="static" color="default">
-      <Toolbar>
-        <Typography variant="h6" color="inherit">
-          Photos
-          </Typography>
-      </Toolbar>
-    </AppBar>
+    <div className={classes.root}>
+      <AppBar position="absolute" color="default">
+        <Toolbar>
+          <Typography variant="h6" color="inherit">
+            Contact Form
+        </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
