@@ -1,25 +1,29 @@
 import React from 'react'
-import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, Icon, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
+  appbar: {
+    margin: 0
+  },
+  icon: {
+    marginRight: '10px',
+    marginTop: '5px'
   }
-}));
+}))
 
 const Header = () => {
-  const classes = useStyles();
-
+  const classes = useStyles()
   return (
-    <div className={classes.root}>
-      <AppBar position="absolute" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Contact Form
+    <AppBar className={classes.appbar} position="static" color="primary">
+      <Toolbar>
+        <Typography variant="h6" color="inherit">
+          <Icon className={classes.icon}>contact_mail</Icon>
         </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+        <Typography variant="h6" color="inherit">
+          Contact Form
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 }
 

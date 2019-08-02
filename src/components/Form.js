@@ -4,12 +4,29 @@ import {
   InputLabel,
   Input,
   Button,
-  Icon
+  Icon,
+  makeStyles,
+  Typography
 } from "@material-ui/core"
 
 
+const useStyles = makeStyles(theme => ({
+  form: {
+    width: '50%'
+  },
+  frame: {
+    display: "flex",
+    justifyContent: "center",
+    margin: '10px',
+    padding: '30px'
+  },
+  icon: {
+    marginLeft: '5px'
+  }
+}))
 
 const Form = () => {
+  const classes = useStyles()
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -20,35 +37,28 @@ const Form = () => {
     setValues({ ...values, [name]: event.target.value });
   }
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        margin: 20,
-        padding: 20
-      }}
-    >
-      <form style={{ width: "50%" }}>
-        <h1>Contact Form</h1>
+  const handleSubmit = () => {
 
+  }
+
+  return (
+    <div className={classes.frame}>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <Typography variant="h3" color="inherit">Contact Form</Typography>
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="name">Name</InputLabel>
           <Input id="name" type="text" onChange={handleChange('name')} />
         </FormControl>
-
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="email">Email</InputLabel>
           <Input id="email" type="email" onChange={handleChange('email')} />
         </FormControl>
-
         <FormControl margin="normal" fullWidth>
           <InputLabel htmlFor="message">Message</InputLabel>
           <Input id="message" onChange={handleChange('message')} multiline rows={10} />
         </FormControl>
-
-        <Button variant="contained" color="primary" size="medium">
-          Send <Icon style={{ marginLeft: 5 }}>send</Icon>
+        <Button type="submit" fullWidth variant="contained" color="primary" size="medium">
+          Send <Icon className={classes.icon}>send</Icon>
         </Button>
       </form>
     </div>
