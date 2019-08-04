@@ -14,12 +14,13 @@ function App() {
   const classes = useStyles()
   return (
     <Fragment>
-      <Header />
+      <Header color="primary" title="MK DECISION" />
       <div style={{ marginTop: 120 }}>
         <Container spacing={40} fixed>
           <Grid container direction="row" justify="center" alignItems="center">
-            <Grid item sm={8}>
-              <Paper className={classes.paper}>
+            <Grid item sm={6}>
+              <Header color="primary" title="Contact Form" icon="contact_mail" />
+              <Paper elevation={0} square={true} className={classes.paper}>
                 <Form />
               </Paper>
             </Grid>

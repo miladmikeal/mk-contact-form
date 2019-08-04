@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import {
   FormControl,
   TextField,
   Button,
   Icon,
   makeStyles,
-  Typography,
   Snackbar,
   IconButton
 } from "@material-ui/core"
@@ -13,12 +13,11 @@ import {
 
 const useStyles = makeStyles(theme => ({
   form: {
-    width: '50%'
+    width: '80%'
   },
   frame: {
     display: "flex",
     justifyContent: "center",
-    margin: '10px',
     padding: '30px'
   },
   icon: {
@@ -46,13 +45,21 @@ const Form = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    setValues({
-      name: '',
-      email: '',
-      message: ''
+    axios.post('https://skna44to35.execute-api.us-west-2.amazonaws.com/prod/email', {
+      subject: email,
+      body: message
     })
-    setOpen(true)
-
+    .then(() => {
+      setValues({
+        name: '',
+        email: '',
+        message: ''
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    
   }
 
   const handleClose = (e, reason) => {
@@ -66,7 +73,6 @@ const Form = () => {
   return (
     <div className={classes.frame}>
       <form onSubmit={handleSubmit} className={classes.form}>
-        <Typography variant="h3" color="primary">Contact Form</Typography>
         <FormControl margin="normal" fullWidth>
           <TextField value={name} variant="outlined" label="Name" id="name" type="text" onChange={handleChange('name')} required />
         </FormControl>

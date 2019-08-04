@@ -11,16 +11,16 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Header = () => {
+const Header = props => {
   const classes = useStyles()
   return (
-    <AppBar className={classes.appbar} position="static" color="primary">
+    <AppBar className={classes.appbar} position="static" color={props.color}>
       <Toolbar>
         <Typography variant="h6" color="inherit">
-          <Icon className={classes.icon}>contact_mail</Icon>
+          <Icon className={classes.icon}>{props.icon}</Icon>
         </Typography>
         <Typography variant="h6" color="inherit">
-          Contact Form
+          {props.title}
         </Typography>
       </Toolbar>
     </AppBar>

@@ -1,0 +1,9 @@
+{
+  "name": "mk-contact-form",
+  "description": "Contact form for MK",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::467719028832:role/send-email-submit",
+  "runtime": "nodejs10.x",
+  "environment": {}
+}
