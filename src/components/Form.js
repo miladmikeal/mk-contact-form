@@ -49,17 +49,18 @@ const Form = () => {
       subject: email,
       body: message
     })
-    .then(() => {
-      setValues({
-        name: '',
-        email: '',
-        message: ''
+      .then(() => {
+        setOpen(true)
+        setValues({
+          name: '',
+          email: '',
+          message: ''
+        })
       })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    
+      .catch(err => {
+        console.log(err)
+      })
+
   }
 
   const handleClose = (e, reason) => {
